@@ -15,5 +15,15 @@
  limitations under the License.
 -->
 <resources>
+
+    <color name="color_primary">#FFF</color>
+    <color name="color_primary_dark">#888FFF</color>
+    <color name="color_accent">#3195FF</color>
+
     <color name="control_background">#cc4285f4</color>
+
+    <color name="action_background">#FC4E33</color>
+
+    <color name="text_gray">#8C000000</color>
+
 </resources>

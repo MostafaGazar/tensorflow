@@ -1,0 +1,18 @@
+<resources>
+
+    <dimen name="keyline_first">16dp</dimen>
+
+    <dimen name="default_horizontal_margin">16dp</dimen>
+    <dimen name="default_vertical_margin">16dp</dimen>
+
+    <dimen name="default_button_padding">16dp</dimen>
+    <dimen name="extra_button_padding">32dp</dimen>
+
+    <dimen name="camera_actions_container_height">120dp</dimen>
+
+    <dimen name="photo_picker_corner">4dp</dimen>
+
+    <dimen name="bottomsheet_default_sheet_width">0dp</dimen>
+    <dimen name="bottomsheet_image_tile_spacing">4dp</dimen>
+
+</resources>

@@ -24,7 +24,7 @@ import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-public class CameraActivity extends Activity {
+public class CameraActivity extends BaseActivity {
   private static final int PERMISSIONS_REQUEST = 1;
 
   private static final String PERMISSION_CAMERA = Manifest.permission.CAMERA;
