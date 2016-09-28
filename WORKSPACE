@@ -15,15 +15,15 @@ android_ndk_repository(
    api_level=21)
 
 # https://gitlab.com/perezd/ffruit/blob/ef1408ce00c9f90406059f9d788b55803427a3ff/WORKSPACE
-# load("/tensorflow/examples/android/third_party/java/junit/workspace", "junit")
-# load("/tensorflow/examples/android/third_party/java/okhttp/workspace", "okhttp")
-# load("/tensorflow/examples/android/third_party/java/rxjava/workspace", "rxjava")
-# load("/tensorflow/examples/android/third_party/java/glide/workspace", "glide")
+load("/tensorflow/examples/android/third_party/java/junit/workspace", "junit")
+load("/tensorflow/examples/android/third_party/java/okhttp/workspace", "okhttp")
+load("/tensorflow/examples/android/third_party/java/rxjava/workspace", "rxjava")
+load("/tensorflow/examples/android/third_party/java/glide/workspace", "glide")
 
-# junit()
-# okhttp()
-# rxjava()
-# glide()
+junit()
+okhttp()
+rxjava()
+glide()
 
 # Please add all new TensorFlow dependencies in workspace.bzl.
 load("//tensorflow:workspace.bzl", "tf_workspace")

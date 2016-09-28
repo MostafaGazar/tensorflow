@@ -70,6 +70,18 @@ android_binary(
     ],
     deps = [
         ":tensorflow_native_libs",
+
+        # https://github.com/bazelbuild/bazel/blob/master/tools/android/android_sdk_repository_template.bzl
+        "@androidsdk//:appcompat_v4",
+        "@androidsdk//:appcompat_v7",
+        "@androidsdk//:cardview_v7",
+        "@androidsdk//:recyclerview_v7",
+        "@androidsdk//:design",
+        "@androidsdk//:palette_v7",
+
+        "//tensorflow/examples/android/third_party/java/okhttp",
+        "//tensorflow/examples/android/third_party/java/rxjava",
+        "//tensorflow/examples/android/third_party/java/glide",
     ],
 )
 
