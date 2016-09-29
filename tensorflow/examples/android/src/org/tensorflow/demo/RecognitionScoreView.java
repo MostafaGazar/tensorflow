@@ -23,6 +23,7 @@ import android.util.TypedValue;
 import android.view.View;
 
 import org.tensorflow.demo.Classifier.Recognition;
+import org.tensorflow.demo.env.Utils;
 
 import java.util.List;
 
@@ -40,10 +41,11 @@ public class RecognitionScoreView extends View {
         TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP, TEXT_SIZE_DIP, getResources().getDisplayMetrics());
     fgPaint = new Paint();
+    fgPaint.setColor(0xcc000000);
     fgPaint.setTextSize(textSizePx);
 
     bgPaint = new Paint();
-    bgPaint.setColor(0xcc4285f4);
+    bgPaint.setColor(0xffffffff);
   }
 
   public void setResults(final List<Recognition> results) {
@@ -53,7 +55,7 @@ public class RecognitionScoreView extends View {
 
   @Override
   public void onDraw(final Canvas canvas) {
-    final int x = 10;
+    final int x = Utils.dp2px(getContext(), 16);
     int y = (int) (fgPaint.getTextSize() * 1.5f);
 
     canvas.drawPaint(bgPaint);
