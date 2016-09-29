@@ -23,4 +23,5 @@ __pycache__
 *.swp
 gradleBuild/
 .idea/
+.gradle/
 
