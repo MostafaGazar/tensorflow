@@ -16,12 +16,9 @@
 
 package org.tensorflow.demo;
 
-import android.Manifest;
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -41,15 +38,12 @@ import android.hardware.camera2.params.StreamConfigurationMap;
 import android.media.Image;
 import android.media.ImageReader;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.util.Size;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
@@ -388,35 +382,29 @@ public class CameraConnectionFragment extends BaseFragment {
         });
 
         ImageButton pickPhotoImageButton = (ImageButton) view.findViewById(R.id.pick_photo_imagebutton);
-        if (!checkNeedsPermission()) {
-            Cursor cursor = ImagePickerUtil.getImagesCursor(getActivity());
-            if (cursor != null) {
-                while (cursor.moveToNext()) {
-                    String imageLocation = cursor.getString(1);
-                    File imageFile = new File(imageLocation);
-                    if (imageFile.exists()) {
-                        Glide.with(getActivity())
-                                .load(Uri.fromFile(imageFile))
-                                .bitmapTransform(new CenterCrop(getActivity()),
-                                        new RoundedCornersTransformation(getActivity(), (int) getResources().getDimension(R.dimen.image_corners), 0))
-                                .crossFade()
-                                .into(pickPhotoImageButton);
+        Cursor cursor = ImagePickerUtil.getImagesCursor(getActivity());
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                String imageLocation = cursor.getString(1);
+                File imageFile = new File(imageLocation);
+                if (imageFile.exists()) {
+                    Glide.with(getActivity())
+                            .load(Uri.fromFile(imageFile))
+                            .bitmapTransform(new CenterCrop(getActivity()),
+                                    new RoundedCornersTransformation(getActivity(), (int) getResources().getDimension(R.dimen.image_corners), 0))
+                            .crossFade()
+                            .into(pickPhotoImageButton);
 
-                        break;
-                    }
+                    break;
                 }
-                cursor.close();
             }
+            cursor.close();
         }
 
         pickPhotoImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkNeedsPermission()) {
-                    requestStoragePermission();
-                } else {
-                    showSheetView();
-                }
+                showSheetView();
             }
         });
     }
@@ -730,42 +718,10 @@ public class CameraConnectionFragment extends BaseFragment {
 
     // Bottom sheet related code.
 
-    private static final int REQUEST_STORAGE = 0;
-    private static final int REQUEST_IMAGE_CAPTURE = REQUEST_STORAGE + 1;
-    private static final int REQUEST_LOAD_IMAGE = REQUEST_IMAGE_CAPTURE + 1;
+    private static final int REQUEST_IMAGE_CAPTURE = 100;
+    private static final int REQUEST_LOAD_IMAGE = 200;
     protected BottomSheetLayout bottomSheetLayout;
     private Uri cameraImageUri = null;
-
-    // FIXME :: DELETE, already in the Activity.
-    private boolean checkNeedsPermission() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN &&
-                ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED;
-    }
-
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    private void requestStoragePermission() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE);
-        } else {
-            // Eh, prompt anyway
-            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE);
-        }
-    }
-
-    @TargetApi(Build.VERSION_CODES.M)
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == REQUEST_STORAGE) {
-            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                showSheetView();
-            } else {
-                // FIXME :: Permission denied
-                Toast.makeText(getActivity(), "Sheet is useless without access to external storage :/", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
-    }
 
     /**
      * Show an {@link ImagePickerSheetView}
