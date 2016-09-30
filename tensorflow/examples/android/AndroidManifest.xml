@@ -45,7 +45,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".CameraInsightsActivity" />
+        <activity
+            android:name=".CameraInsightsActivity"
+            android:theme="@style/AppTheme.FullScreen"
+            android:screenOrientation="portrait"/>
 
     </application>
 

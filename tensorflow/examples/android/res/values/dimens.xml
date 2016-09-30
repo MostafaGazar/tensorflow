@@ -8,9 +8,10 @@
     <dimen name="default_button_padding">16dp</dimen>
     <dimen name="extra_button_padding">32dp</dimen>
 
+    <dimen name="camera_recognition_view_height">160dp</dimen>
     <dimen name="camera_actions_container_height">120dp</dimen>
 
-    <dimen name="photo_picker_corner">4dp</dimen>
+    <dimen name="image_corners">4dp</dimen>
 
     <dimen name="bottomsheet_default_sheet_width">0dp</dimen>
     <dimen name="bottomsheet_image_tile_spacing">4dp</dimen>

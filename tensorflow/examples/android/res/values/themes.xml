@@ -13,4 +13,13 @@
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 
+    <style name="Toolbar" parent="Theme.AppCompat.Light"/>
+
+    <style name="Toolbar.Transparent" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+
+        <item name="android:background">@color/transparent_toolbar</item>
+    </style>
+
 </resources>

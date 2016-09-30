@@ -62,6 +62,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.flipboard.bottomsheet.BottomSheetLayout;
 import com.flipboard.bottomsheet.commons.ImagePickerSheetView;
 import com.flipboard.bottomsheet.commons.ImagePickerUtil;
@@ -396,9 +397,8 @@ public class CameraConnectionFragment extends BaseFragment {
                     if (imageFile.exists()) {
                         Glide.with(getActivity())
                                 .load(Uri.fromFile(imageFile))
-//                                .bitmapTransform(new RoundedCornersTransformation(getActivity(),
-//                                        (int) getResources().getDimension(R.dimen.photo_picker_corner), 0))
-                                .centerCrop()
+                                .bitmapTransform(new CenterCrop(getActivity()),
+                                        new RoundedCornersTransformation(getActivity(), (int) getResources().getDimension(R.dimen.image_corners), 0))
                                 .crossFade()
                                 .into(pickPhotoImageButton);
 

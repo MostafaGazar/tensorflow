@@ -13,17 +13,41 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -->
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="top"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="2dp"
+        app:cardPreventCornerOverlap="false">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </android.support.v7.widget.CardView>
+
+    <!--<android.support.v7.widget.CardView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="1dp"-->
+    <!--app:cardElevation="2dp"-->
+    <!--app:cardCornerRadius="0dp"-->
+    <!--android:layout_marginTop="-1dp"/>-->
 
     <TextView
+        android:id="@+id/results_textview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Insights" />
+        android:layout_height="@dimen/camera_recognition_view_height"
+        android:padding="@dimen/keyline_first"
+        android:text="Generating suggestions..." />
 
 </LinearLayout>
 

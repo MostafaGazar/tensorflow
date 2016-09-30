@@ -38,8 +38,7 @@
                 android:layout_height="48dp"
                 android:layout_marginLeft="@dimen/keyline_first"
                 android:layout_marginStart="@dimen/keyline_first"
-                android:layout_gravity="left|start|center_vertical"
-                android:background="#AAF2FE" />
+                android:layout_gravity="left|start|center_vertical" />
 
             <ImageButton
                 android:id="@+id/take_photo_imagebutton"
@@ -54,7 +53,7 @@
         <org.tensorflow.demo.RecognitionScoreView
             android:id="@+id/results"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="@dimen/camera_recognition_view_height"
             android:layout_above="@id/actions_container"/>
 
         <android.support.v7.widget.CardView
