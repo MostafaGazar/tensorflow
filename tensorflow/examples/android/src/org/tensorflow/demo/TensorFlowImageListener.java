@@ -47,16 +47,21 @@ public class TensorFlowImageListener implements OnImageAvailableListener {
   // INPUT_NAME = "Mul:0", and OUTPUT_NAME = "final_result:0".
   // You'll also need to update the MODEL_FILE and LABEL_FILE paths to point to
   // the ones you produced.
-  private static final int NUM_CLASSES = 1001;
-  private static final int INPUT_SIZE = 224;
-  private static final int IMAGE_MEAN = 117;
-  private static final float IMAGE_STD = 1;
-  private static final String INPUT_NAME = "input:0";
-  private static final String OUTPUT_NAME = "output:0";
+  public static final int NUM_CLASSES = 1001;
+  public static final int INPUT_SIZE = 224;
+  public static final int IMAGE_MEAN = 117;
+  public static final float IMAGE_STD = 1;
+  public static final String INPUT_NAME = "input:0";
+  public static final String OUTPUT_NAME = "output:0";
+//  public static final int NUM_CLASSES = 120;
+//  public static final int INPUT_SIZE = 299;
+//  public static final int IMAGE_MEAN = 128;
+//  public static final float IMAGE_STD = 128;
+//  public static final String INPUT_NAME = "Mul:0";
+//  public static final String OUTPUT_NAME = "final_result:0";
 
-  private static final String MODEL_FILE = "file:///android_asset/tensorflow_inception_graph.pb";
-  private static final String LABEL_FILE =
-      "file:///android_asset/imagenet_comp_graph_label_strings.txt";
+  public static final String MODEL_FILE = "file:///android_asset/tensorflow_inception_graph.pb";
+  public static final String LABEL_FILE = "file:///android_asset/imagenet_comp_graph_label_strings.txt";
 
   private Integer sensorOrientation;
 

@@ -21,3 +21,7 @@ node_modules
 *.pyc
 __pycache__
 *.swp
+gradleBuild/
+.idea/
+.gradle/
+

@@ -13,6 +13,12 @@ def nativeDir = 'libs/' + cpuType
 project.buildDir = 'gradleBuild'
 getProject().setBuildDir('gradleBuild')
 
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
 buildscript {
     System.properties['com.android.build.gradle.overrideVersionCheck'] = 'true'
 
@@ -50,6 +56,40 @@ android {
         debug.setRoot('build-types/debug')
         release.setRoot('build-types/release')
     }
+}
+
+ext {
+    supportLibraryVersion = '24.0.0'
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Support libraries
+    compile("com.android.support:support-v4:$supportLibraryVersion") {
+        force = true;
+    }
+    compile("com.android.support:appcompat-v7:$supportLibraryVersion") {
+        force = true;
+    }
+    compile("com.android.support:cardview-v7:$supportLibraryVersion") {
+        force = true;
+    }
+    compile("com.android.support:recyclerview-v7:$supportLibraryVersion") {
+        force = true;
+    }
+//    compile("com.android.support:support-annotations:$supportLibraryVersion") {
+//        force = true;
+//    }
+    compile("com.android.support:design:$supportLibraryVersion")
+    compile("com.android.support:palette-v7:$supportLibraryVersion")
+
+    // RxAndroid
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'io.reactivex:rxjava:1.1.8'
+
+    // Glide
+    compile 'com.github.bumptech.glide:glide:3.7.0'
 }
 
 task buildNative(type:Exec) {

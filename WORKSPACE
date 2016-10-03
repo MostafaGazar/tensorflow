@@ -1,18 +1,29 @@
 workspace(name = "org_tensorflow")
 
 # Uncomment and update the paths in these entries to build the Android demo.
-#android_sdk_repository(
-#    name = "androidsdk",
-#    api_level = 23,
-#    build_tools_version = "23.0.1",
-#    # Replace with path to Android SDK on your system
-#    path = "<PATH_TO_SDK>",
-#)
-#
-#android_ndk_repository(
-#    name="androidndk",
-#    path="<PATH_TO_NDK>",
-#    api_level=21)
+android_sdk_repository(
+   name = "androidsdk",
+   api_level = 23,
+   build_tools_version = "23.0.1",
+   # Replace with path to Android SDK on your system
+   path = "/Users/mostafagazar/Work/sdk/",
+)
+
+android_ndk_repository(
+   name="androidndk",
+   path="/Users/mostafagazar/Work/sdk/ndk-bundle/",
+   api_level=21)
+
+# https://gitlab.com/perezd/ffruit/blob/ef1408ce00c9f90406059f9d788b55803427a3ff/WORKSPACE
+load("/tensorflow/examples/android/third_party/java/junit/workspace", "junit")
+load("/tensorflow/examples/android/third_party/java/okhttp/workspace", "okhttp")
+load("/tensorflow/examples/android/third_party/java/rxjava/workspace", "rxjava")
+load("/tensorflow/examples/android/third_party/java/glide/workspace", "glide")
+
+junit()
+okhttp()
+rxjava()
+glide()
 
 # Please add all new TensorFlow dependencies in workspace.bzl.
 load("//tensorflow:workspace.bzl", "tf_workspace")

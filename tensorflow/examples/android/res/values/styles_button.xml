@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Button" parent="Widget.AppCompat.Button"/>
+
+    <style name="Button.Colored">
+        <item name="android:background">?colorAccent</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:paddingLeft">@dimen/default_button_padding</item>
+        <item name="android:paddingRight">@dimen/default_button_padding</item>
+    </style>
+
+    <style name="Button.Borderless" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="Button.Flat" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:background">?selectableItemBackground</item>
+        <item name="android:paddingLeft">@dimen/default_button_padding</item>
+        <item name="android:paddingRight">@dimen/default_button_padding</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Button</item>
+    </style>
+
+    <style name="Button.Flat.Colored" parent="Widget.AppCompat.Button.Borderless.Colored">
+        <item name="android:background">?selectableItemBackground</item>
+        <item name="android:textColor">?colorAccent</item>
+        <item name="android:paddingLeft">@dimen/default_button_padding</item>
+        <item name="android:paddingRight">@dimen/default_button_padding</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Button</item>
+    </style>
+
+    <style name="Button.Raised">
+        <item name="android:paddingLeft">@dimen/extra_button_padding</item>
+        <item name="android:paddingRight">@dimen/extra_button_padding</item>
+    </style>
+
+    <style name="Button.Raised.Colored" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:paddingLeft">@dimen/extra_button_padding</item>
+        <item name="android:paddingRight">@dimen/extra_button_padding</item>
+    </style>
+
+</resources>
